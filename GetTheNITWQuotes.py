@@ -55,6 +55,9 @@ def getRandomNamPlusRandom():
 def NumOfTweetsOfSetMade():
     return 0
 
+def PrintTweet(myTweet):
+    print(myTweet)
+
 def Tweet(myTweet):
     consumer_key = ''
     consumer_secret = ''

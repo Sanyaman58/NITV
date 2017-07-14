@@ -34,6 +34,7 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
     i = True
     while i:
         if int(QuoteNum) < TotalNumOfQuotes:
+            GetTheNITWQuotes.PrintTweet(QuoteList[QuoteNum - 1])(QuoteList[QuoteNum - 1])
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                 data[0] = data[0] + "\n"
                 if "\n\n" in data[0]:
@@ -61,6 +62,7 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
             print("No more quotes! Getting more quotes...")
             QuoteList = GetTheNITWQuotes.getNITWQuotes()
             QuoteListLen = QuoteList.__len__()
+            GetTheNITWQuotes.Tweet(QuoteList[QuoteNum - 1])
             print(QuoteList)
             print(QuoteListLen)
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
