@@ -15,6 +15,8 @@ TotalNumOfQuotes: 38
 
 
 '''
+
+
 from time import sleep
 
 with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
@@ -22,7 +24,6 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
     #print(data)
     data = data.strip().split("\n")
     #data = data.strip().split("\:")
-    GetTheNITWQuotes.getRandomNum()
     QuoteNum = int(data[0])
     TotalNumOfQuotes = int(data[1])
     print(QuoteNum)
@@ -37,12 +38,14 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
                 print(data[0])
                 with open('QuoteCounter.txt', 'w') as file:
                     file.writelines(data)
-                    #QuoteCounter.close()
+                    QuoteCounter.close()
                     #i = False
                     #sleep(5)
         else:
             QuoteCounter.close()
-            i = False
+            #i = False
+            QuoteList = GetTheNITWQuotes.getNITWQuotes()
+            QuoteListLen = QuoteList.__len__()
 
 '''
                 #QuoteCounter.seek(QuoteNum)

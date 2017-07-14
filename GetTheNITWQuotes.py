@@ -39,18 +39,18 @@ with open('D:\\Users\\Rob\\My Programming Folder\\Python Stuff\\Hugs\\Night In T
     print(*lines, end="")
 '''
 
-#randomNum = randint(0, 11000)
-#randomNumPlusRandom = randomNum + randint(30, 50)
+randomNum = randint(0, 11000)
+randomNumPlusRandom = randomNum + randint(30, 50)
 
 def getRandomNum():
-    randomNum = randint(0, 11000)
+    #randomNum = randint(0, 11000)
     randomNumPlusRandom = randomNum + randint(3, 5)
     return randomNum
-    return randomNumPlusRandom
 
-#def getRandomNamPlusRandom():
+def getRandomNamPlusRandom():
 #    randomNumPlusRandom = randomNum + randint(30, 50)
 #    return randomNumPlusRandom
+    return randomNumPlusRandom
 
 def NumOfTweetsOfSetMade():
     return 0
