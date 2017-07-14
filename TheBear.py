@@ -1,31 +1,42 @@
 import GetTheNITWQuotes
-
+QuoteList = GetTheNITWQuotes.getNITWQuotes()
+QuoteListLen = QuoteList.__len__()
 '''
 
 You are so close~!!! 'w'~~~ Don't give up! You KNOW this works!!!!!!!
 uh Thx My Comptueroeruiejrioemjfio
-
-
 a log file that lists two numbers: what variable in the array we are on and the total number of variables in that array
 
 open(arrayLogFile.txt).read()
   QuoteNum: 0
 TotalNumOfQuotes: 38
     if (data.split(:)
-
-
 '''
-
-
 from time import sleep
 
-with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
-    data=QuoteCounter.read()
-    #print(data)
-    data = data.strip().split("\n")
-    #data = data.strip().split("\:")
+#def appendData():
+#    return QuoteNum = int(data[0])
+#    return TotalNumOfQuotes = int(data[1])
+try:
+    with open('QuoteCounter.txt', 'r+', encoding='utf-8'):
+except FileNotFoundError as FileNotFoundErr:
+    with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
+        data = QuoteCounter.read()
+        #print(data)
+        data = data.strip().split("\n")
+        #data = data.strip().split("\:")
+        QuoteNum = int(data[0])
+        TotalNumOfQuotes = int(data[1])
+except ValueError as ValErr:
+    #data[0] = int(data[0]) + 1
+    data = [str(0) + '\n', str(QuoteListLen)]
+    QuoteCounter.writelines(data)
+    QuoteCounter.close()
     QuoteNum = int(data[0])
     TotalNumOfQuotes = int(data[1])
+    #except FileNotFoundError as FileNotFoundErr:
+    #    with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
+
     #print(QuoteNum)
     #print(TotalNumOfQuotes)
     #a = True
@@ -33,8 +44,12 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
         #data[0] = QuoteNum
     i = True
     while i:
+         #if this OR there is no text file
         if int(QuoteNum) < TotalNumOfQuotes:
-            GetTheNITWQuotes.PrintTweet(QuoteList[QuoteNum - 1])(QuoteList[QuoteNum - 1])
+            Test = str(GetTheNITWQuotes.Tweet(QuoteList[QuoteNum - 1]))
+            #DateTime = GetTheNITWQuotes.DateTime()
+            print(Test)
+            #print(DateTime)
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                 data[0] = data[0] + "\n"
                 if "\n\n" in data[0]:
@@ -46,8 +61,8 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
                 #print(str(QuoteNum + 1))
                 data[0] = int(data[0]) + 1
                 QuoteNum = data[0]
-                data[0] = str(data[0])
-                data[0] = data[0] + "\n"
+                data[0] = str(data[0]) + "\n"
+                #data[0] = data[0] + "\n"
                 print(data[0])
                 with open('QuoteCounter.txt', 'w') as file:
                     file.writelines(data)
@@ -98,9 +113,3 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
                 print(TotalNumOfQuotes)
                 sleep(5)
 '''
-
-
-
-
-
-
