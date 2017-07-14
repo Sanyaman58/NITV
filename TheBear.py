@@ -72,8 +72,7 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
                 data = QuoteCounter.readlines()
                 #QuoteNum += int(QuoteNum)
                 #print(str(QuoteNum + 1))
-                data[0] = str(1)
-                data[1] = str(QuoteListLen)
+                data = [str(0), str(QuoteListLen)]
                 QuoteNum = data[0]
                 data[0] = str(data[0])
                 data[0] = data[0] + "\n"
