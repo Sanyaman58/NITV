@@ -1,9 +1,10 @@
 import os
 #import date
 from random import randint
-from time import sleep
+from time import sleep, gmtime, strftime
+import time
 import tweepy
-
+import datetime
 
 def isNotEmpty(s):
     return bool(s and s.strip())
@@ -55,8 +56,14 @@ def getRandomNamPlusRandom():
 def NumOfTweetsOfSetMade():
     return 0
 
-def PrintTweet(myTweet):
-    print(myTweet)
+#def PrintTweet(myTweet):
+#    print(myTweet)
+#    return
+
+def DateTime():
+    return strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    #DateTime = datetime.datetime.now
+    #return time.strftime('%H:%M:%S', time.localtime())
 
 def Tweet(myTweet):
     consumer_key = ''
@@ -67,11 +74,12 @@ def Tweet(myTweet):
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
     #print(line[0])
-    print(myTweet)
+    #print(myTweet)
     #print(targetLineQuotes)
     #print(randomNumPlusRandom - 1)
     #api.update_status(status=myTweet)
     NumOfTweetsOfSetMade =+ 1
+    return myTweet
 
 # NumOfTweetsOfSetMade = 0
 
