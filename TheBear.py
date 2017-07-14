@@ -26,11 +26,14 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
     #data = data.strip().split("\:")
     QuoteNum = int(data[0])
     TotalNumOfQuotes = int(data[1])
-    print(QuoteNum)
-    print(TotalNumOfQuotes)
+    #print(QuoteNum)
+    #print(TotalNumOfQuotes)
+    #a = True
+    #while a:
+        #data[0] = QuoteNum
     i = True
     while i:
-        if int(QuoteNum) <= TotalNumOfQuotes:
+        if int(QuoteNum) < TotalNumOfQuotes:
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                 data[0] = data[0] + "\n"
                 if "\n\n" in data[0]:
@@ -43,20 +46,41 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
                 data[0] = int(data[0]) + 1
                 QuoteNum = data[0]
                 data[0] = str(data[0])
-
                 data[0] = data[0] + "\n"
                 print(data[0])
                 with open('QuoteCounter.txt', 'w') as file:
                     file.writelines(data)
                     QuoteCounter.close()
-                    print("Done!")
-                    #i = False
+                    i = False
                     #sleep(5)
         else:
             QuoteCounter.close()
-            #i = False
-            #QuoteList = GetTheNITWQuotes.getNITWQuotes()
-            #QuoteListLen = QuoteList.__len__()
+            QuoteNum = 1
+            #a = False
+            i = False
+            print("No more quotes! Getting more quotes...")
+            QuoteList = GetTheNITWQuotes.getNITWQuotes()
+            QuoteListLen = QuoteList.__len__()
+            print(QuoteList)
+            print(QuoteListLen)
+            with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
+                data[0] = data[0] + "\n"
+                if "\n\n" in data[0]:
+                    #print("Hello")
+                    data[0] = data[0].replace("\n\n", "\n")
+                    #data[0] = data[0] + "\n"
+                data = QuoteCounter.readlines()
+                #QuoteNum += int(QuoteNum)
+                #print(str(QuoteNum + 1))
+                data[0] = str(1)
+                data[1] = str(QuoteListLen)
+                QuoteNum = data[0]
+                data[0] = str(data[0])
+                data[0] = data[0] + "\n"
+                with open('QuoteCounter.txt', 'w') as file:
+                    file.writelines(data)
+                    QuoteCounter.close()
+                    i = True
 
 '''
                 #QuoteCounter.seek(QuoteNum)
