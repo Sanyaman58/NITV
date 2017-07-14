@@ -30,22 +30,33 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
     print(TotalNumOfQuotes)
     i = True
     while i:
-        if int(QuoteNum) < TotalNumOfQuotes:
+        if int(QuoteNum) <= TotalNumOfQuotes:
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
+                data[0] = data[0] + "\n"
+                if "\n\n" in data[0]:
+                    #print("Hello")
+                    data[0] = data[0].replace("\n\n", "\n")
+                    #data[0] = data[0] + "\n"
                 data = QuoteCounter.readlines()
                 #QuoteNum += int(QuoteNum)
-                data[0] = str(QuoteNum + 1) + "\n"
+                #print(str(QuoteNum + 1))
+                data[0] = int(data[0]) + 1
+                QuoteNum = data[0]
+                data[0] = str(data[0])
+
+                data[0] = data[0] + "\n"
                 print(data[0])
                 with open('QuoteCounter.txt', 'w') as file:
                     file.writelines(data)
                     QuoteCounter.close()
+                    print("Done!")
                     #i = False
                     #sleep(5)
         else:
             QuoteCounter.close()
             #i = False
-            QuoteList = GetTheNITWQuotes.getNITWQuotes()
-            QuoteListLen = QuoteList.__len__()
+            #QuoteList = GetTheNITWQuotes.getNITWQuotes()
+            #QuoteListLen = QuoteList.__len__()
 
 '''
                 #QuoteCounter.seek(QuoteNum)
