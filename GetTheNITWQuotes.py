@@ -42,7 +42,7 @@ with open('D:\\Users\\Rob\\My Programming Folder\\Python Stuff\\Hugs\\Night In T
 
 randomNum = randint(0, 11000)
 randomNumPlusRandom = randomNum + randint(30, 50)
-
+'''
 def getRandomNum():
     #randomNum = randint(0, 11000)
     randomNumPlusRandom = randomNum + randint(3, 5)
@@ -52,7 +52,7 @@ def getRandomNamPlusRandom():
 #    randomNumPlusRandom = randomNum + randint(30, 50)
 #    return randomNumPlusRandom
     return randomNumPlusRandom
-
+'''
 def NumOfTweetsOfSetMade():
     return 0
 
@@ -101,9 +101,9 @@ def getNITWQuotes():
             lines.append(line)
             #print(lines)
             #list(range(9))
-            targetlineNumbers = list(range(getRandomNum(), getRandomNamPlusRandom()))
+            targetlineNumbers = list(range(randomNum, randomNumPlusRandom))
         for line in lines:
-            if line[0] == getRandomNamPlusRandom():
+            if line[0] == randomNumPlusRandom:
                 print('loop')
                 break
             if line[0] in targetlineNumbers:
@@ -123,7 +123,7 @@ def getNITWQuotes():
                     isError = False
                     #print(isError)
                     pass
-                if bool(line[0] >= (getRandomNamPlusRandom() - 1)):
+                if bool(line[0] >= (randomNumPlusRandom - 1)):
                     #print("[This is the last quote in this set.]")
                     #print(targetLineQuotes)
                     #NumberList = [1,1,1,2,3,4,5,5,5,5,6,6]
