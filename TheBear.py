@@ -14,24 +14,6 @@ TotalNumOfQuotes: 38
 '''
 from time import sleep
 
-try:
-    with open('QuoteCounter.txt', 'r+', encoding='utf-8'):
-except FileNotFoundError as FileNotFoundErr:
-    with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
-        data = QuoteCounter.read()
-        #print(data)
-        data = data.strip().split("\n")
-        #data = data.strip().split("\:")
-        QuoteNum = int(data[0])
-        TotalNumOfQuotes = int(data[1])
-except ValueError as ValErr:
-    #data[0] = int(data[0]) + 1
-    data = [str(0) + '\n', str(QuoteListLen)]
-    QuoteCounter.writelines(data)
-    QuoteCounter.close()
-    QuoteNum = int(data[0])
-    TotalNumOfQuotes = int(data[1])
-    #except FileNotFoundError as FileNotFoundErr:
 with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
     data = QuoteCounter.read()
     #print(data)
