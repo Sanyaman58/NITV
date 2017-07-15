@@ -66,20 +66,24 @@ def DateTime():
     #return time.strftime('%H:%M:%S', time.localtime())
 
 def Tweet(myTweet):
-    consumer_key = ''
-    consumer_secret = ''
-    access_token = ''
-    access_token_secret = ''
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth)
-    #print(line[0])
-    #print(myTweet)
-    #print(targetLineQuotes)
-    #print(randomNumPlusRandom - 1)
-    #api.update_status(status=myTweet)
-    NumOfTweetsOfSetMade =+ 1
-    return myTweet
+    try:
+        consumer_key = ''
+        consumer_secret = ''
+        access_token = ''
+        access_token_secret = ''
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_token_secret)
+        api = tweepy.API(auth)
+        #print(line[0])
+        #print(myTweet)
+        #print(targetLineQuotes)
+        #print(randomNumPlusRandom - 1)
+        #api.update_status(status=myTweet)
+        NumOfTweetsOfSetMade =+ 1
+        return myTweet
+    except tweepy.error.TweepError as err:
+        err = myTweet
+        return myTweet
 
 # NumOfTweetsOfSetMade = 0
 
@@ -113,7 +117,7 @@ def getNITWQuotes():
                     myTweet = line[1].rstrip('\n')
                     #print(myTweet)
                     targetLineQuotes.append(line[1])
-                except (tweepy.error.TweepError) as err:
+                except tweepy.error.TweepError as err:
                     print(err)
                     print("The tweet that didn't work was: " + myTweet)
                     isError = True
