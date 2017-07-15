@@ -1,4 +1,6 @@
 import GetTheNITWQuotes
+QuoteList = GetTheNITWQuotes.getNITWQuotes()
+QuoteListLen = QuoteList.__len__()
 
 '''
 
@@ -12,13 +14,21 @@ open(arrayLogFile.txt).read()
   QuoteNum: 0
 TotalNumOfQuotes: 38
     if (data.split(:)
-
-
+    #with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
+        #except FileNotFoundError as FileNotFoundErr:
 '''
 
 try:
-    with open('QuoteCounter.txt', 'r+', encoding='utf-8'):
+    open('QuoteCounter.txt', 'r+', encoding='utf-8')
 except FileNotFoundError as FileNotFoundErr:
+    with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
+        data = [str(0) + '\n', str(QuoteListLen)]
+        QuoteCounter.writelines(data)
+        QuoteCounter.close()
+        QuoteNum = int(data[0])
+        TotalNumOfQuotes = int(data[1])
+        #except FileNotFoundError as FileNotFoundErr:
+except ValueError as ValErr:
     with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
         data = QuoteCounter.read()
         #print(data)
@@ -26,14 +36,10 @@ except FileNotFoundError as FileNotFoundErr:
         #data = data.strip().split("\:")
         QuoteNum = int(data[0])
         TotalNumOfQuotes = int(data[1])
-except ValueError as ValErr:
-    #data[0] = int(data[0]) + 1
-    data = [str(0) + '\n', str(QuoteListLen)]
-    QuoteCounter.writelines(data)
-    QuoteCounter.close()
-    QuoteNum = int(data[0])
-    TotalNumOfQuotes = int(data[1])
-    #except FileNotFoundError as FileNotFoundErr:
+        #data[0] = int(data[0]) + 1
+
+
+
     
 from time import sleep
 
@@ -52,7 +58,8 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
     i = True
     while i:
         if int(QuoteNum) < TotalNumOfQuotes:
-            GetTheNITWQuotes.PrintTweet(QuoteList[QuoteNum - 1])(QuoteList[QuoteNum - 1])
+            QuoteNum = int(QuoteNum)
+            GetTheNITWQuotes.PrintTweet(QuoteList[QuoteNum - 1])
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                 data[0] = data[0] + "\n"
                 if "\n\n" in data[0]:
@@ -76,7 +83,7 @@ with open('QuoteCounter.txt', encoding='utf-8') as QuoteCounter:
             QuoteCounter.close()
             QuoteNum = 1
             #a = False
-            i = False
+            #i = False
             print("No more quotes! Getting more quotes...")
             QuoteList = GetTheNITWQuotes.getNITWQuotes()
             QuoteListLen = QuoteList.__len__()
