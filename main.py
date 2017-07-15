@@ -1,24 +1,6 @@
 import functions
 QuoteList = functions.getNITWQuotes()
 QuoteListLen = QuoteList.__len__()
-'''
-
-You are so close~!!! 'w'~~~ Don't give up! You KNOW this works!!!!!!!
-uh Thx My Comptueroeruiejrioemjfio
-a log file that lists two numbers: what variable in the array we are on and the total number of variables in that array
-
-open(arrayLogFile.txt).read()
-  QuoteNum: 0
-TotalNumOfQuotes: 38
-    if (data.split(:)
-'''
-    #with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
-        #except FileNotFoundError as FileNotFoundErr:
-#def WriteToQuotesFromData(QuoteNum, TotalNumOfQuotes):
-#    QuoteNum = int(data[0])
-#    TotalNumOfQuotes = int(data[1])
-#    return QuoteNum, TotalNumOfQuotes
-
 
 try:
     open('QuoteCounter.txt', 'r+', encoding='utf-8')
@@ -27,26 +9,17 @@ except FileNotFoundError as FileNotFoundErr:
         data = [str(0) + '\n', str(QuoteListLen)]
         QuoteCounter.writelines(data)
         QuoteCounter.close()
-        #QuoteNum = int(data[0])
-        #TotalNumOfQuotes = int(data[1])
-        #except FileNotFoundError as FileNotFoundErr:
 except ValueError as ValErr:
     with open('QuoteCounter.txt', 'w', encoding='utf-8') as QuoteCounter:
         data = QuoteCounter.read()
         #print(data)
         data = data.strip().split("\n")
-        #data = data.strip().split("\:")
         QuoteNum = int(data[0])
         TotalNumOfQuotes = int(data[1])
-        #data[0] = int(data[0]) + 1
-
-from time import sleep
 
 with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
     data = QuoteCounter.read()
-    #print(data)
     data = data.strip().split("\n")
-    #data = data.strip().split("\:")
     try:
         QuoteNum = int(data[0])
         TotalNumOfQuotes = int(data[1])
@@ -58,22 +31,14 @@ with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
         QuoteCounter.close()
         QuoteNum = int(data[0])
         TotalNumOfQuotes = int(data[1])
-    #print(QuoteNum)
-    #print(TotalNumOfQuotes)
-    #a = True
-    #while a:
-        #data[0] = QuoteNum
     i = True
     while i:
-         #if this OR there is no text file
         if QuoteNum < TotalNumOfQuotes:
             QuoteNum = int(QuoteNum)
+            #put try/except tweepy tweet error handling in this file?
             print(functions.Tweet(QuoteList[QuoteNum]))
             #DateTime = GetTheNITWQuotes.DateTime()
-            #print(Test)
-            #print(DateTime)
             QuoteNum = int(QuoteNum)
-            #GetTheNITWQuotes.PrintTweet(QuoteList[QuoteNum - 1])
             with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                 data[0] = data[0] + "\n"
                 if "\n\n" in data[0]:
@@ -81,12 +46,9 @@ with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                     data[0] = data[0].replace("\n\n", "\n")
                     #data[0] = data[0] + "\n"
                 data = QuoteCounter.readlines()
-                #QuoteNum += int(QuoteNum)
-                #print(str(QuoteNum + 1))
                 data[0] = int(data[0]) + 1
                 QuoteNum = data[0]
                 data[0] = str(data[0]) + "\n"
-                #data[0] = data[0] + "\n"
                 print(data[0])
                 with open('QuoteCounter.txt', 'w') as file:
                     file.writelines(data)
@@ -95,9 +57,6 @@ with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                     #sleep(5)
         else:
             QuoteCounter.close()
-            #QuoteNum = 0
-            #a = False
-            #i = False
             print("No more quotes! Getting more quotes...")
             QuoteList = functions.getNITWQuotes()
             QuoteListLen = QuoteList.__len__()
@@ -112,8 +71,6 @@ with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                     data[0] = data[0].replace("\n\n", "\n")
                     #data[0] = data[0] + "\n"
                 data = QuoteCounter.readlines()
-                #QuoteNum += int(QuoteNum)
-                #print(str(QuoteNum + 1))
                 data = [str(0), str(QuoteListLen)]
                 QuoteNum = int(data[0])
                 TotalNumOfQuotes = int(data[1])
@@ -123,19 +80,3 @@ with open('QuoteCounter.txt', 'r+', encoding='utf-8') as QuoteCounter:
                     file.writelines(data)
                     QuoteCounter.close()
                     i = True
-
-'''
-                #QuoteCounter.seek(QuoteNum)
-                QuoteNum = str(QuoteNum + 1)
-                #QuoteCounter.write(QuoteNum)
-                #QuoteCounter.truncate()
-                #QuoteCounter.close()
-                data=QuoteCounter.read()
-                #print(data)
-                data = data.strip().split("\n")
-                QuoteNum = data[0]
-                TotalNumOfQuotes = data[1]
-                print(QuoteNum)
-                print(TotalNumOfQuotes)
-                sleep(5)
-'''
