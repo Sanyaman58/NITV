@@ -1,7 +1,7 @@
 import time
 start_time = time.time()
-from GetTheNITWQuotes import getNITWQuotes
-from GetTheNITWQuotes import getRandomNamPlusRandom
+from functions import getNITWQuotes
+from functions import getRandomNamPlusRandom
 
 # remember to replace tjis with a "remove duplicates next to each other function
 
