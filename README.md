@@ -1,1 +1,1 @@
-Hello. Welcome to my Twitterbot.
+Hello. Welcome to my Twitterbot. Please enjoy your stay. Thank you.
