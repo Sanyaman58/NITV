@@ -6,6 +6,8 @@ import time
 import tweepy
 import datetime
 
+
+
 def remove_adjacent(nums):
   a = nums[:1]
   for item in nums[1:]:
@@ -25,8 +27,7 @@ def get_last_tweet(self):
 - Check if last tweet is not too old, if so, either kill the app or delay tweet
 '''
 
-randomNum = randint(0, 11000)
-randomNumPlusRandom = randomNum + randint(30, 50)
+
 
 def NumOfTweetsOfSetMade():
     return 0
@@ -36,23 +37,9 @@ def DateTime():
     #DateTime = datetime.datetime.now
     #return time.strftime('%H:%M:%S', time.localtime())
 
-def Tweet(myTweet):
-    try:
-        consumer_key = ''
-        consumer_secret = ''
-        access_token = ''
-        access_token_secret = ''
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_token, access_token_secret)
-        api = tweepy.API(auth)
-        #api.update_status(status=myTweet)
-        NumOfTweetsOfSetMade =+ 1
-        return myTweet
-    except tweepy.error.TweepError as err:
-        myTweet = err
-        return "ERROR: TweepError"
-
 def getNITWQuotes():
+    randomNum = randint(0, 11000)
+    randomNumPlusRandom = randomNum + 500
     lines = []
     targetLineQuotes = []
     #randomNum = 6000
@@ -61,7 +48,7 @@ def getNITWQuotes():
     isError = False
     sleep(.5)
     while i == 0:
-        for line in enumerate(open('D:\\Users\\Rob\\My Programming Folder\\Python Stuff\\Hugs\\New Files 7-9-2017\\NightDial.txt', encoding='utf-8')):
+        for line in enumerate(open('/home/pi/NITWBotNew/NightDial.txt',)):
             lines.append(line)
             targetlineNumbers = list(range(randomNum, randomNumPlusRandom))
         for line in lines:
@@ -72,6 +59,9 @@ def getNITWQuotes():
                 if 0 < int(len(line[1])) <= 140:
                     #myTweet = "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
                     #myTweet = line[1].rstrip('\n')
+                    thefile = open('CurrentSet.txt', 'w')
+                    for item in targetLineQuotes:
+                        thefile.write("%s\n" % item)
                     targetLineQuotes.append(line[1].rstrip('\n'))
                 #this should be replaced with a valueError or something like that
                 else:
@@ -80,7 +70,17 @@ def getNITWQuotes():
                 #    isError = False
                 #    pass
                 if bool(line[0] >= (randomNumPlusRandom - 1)):
+                    #Hello = targetLineQuotes
                     return targetLineQuotes
                 #else:
                 #    ranTimer = randint(1600, 1900)
                 #    isError = False
+
+QuoteList = remove_adjacent(getNITWQuotes())
+
+#def QuoteList():
+#    QuoteList = remove_adjacent(getNITWQuotes())
+#    return QuoteList
+
+#def GetQuoteList():
+    #return GetQuoteList()
